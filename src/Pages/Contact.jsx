@@ -1,4 +1,21 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setSubmitted(true);
+
+    e.target.reset();
+
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 5000);
+  };
+
   return (
     <main className="bg-zinc-950 text-white">
 
@@ -48,9 +65,10 @@ function Contact() {
               or anything else, our team is ready to help.
             </p>
 
+
             <div className="flex items-start gap-5 mt-10">
 
-              <div className="w-14 h-14 flex items-center justify-center bg-orange-500/10 border border-orange-500/20 rounded-2xl text-2xl">
+              <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-orange-500/10 border border-orange-500/20 rounded-2xl text-2xl">
                 📍
               </div>
 
@@ -68,7 +86,7 @@ function Contact() {
 
             <div className="flex items-start gap-5 mt-7">
 
-              <div className="w-14 h-14 flex items-center justify-center bg-orange-500/10 border border-orange-500/20 rounded-2xl text-2xl">
+              <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-orange-500/10 border border-orange-500/20 rounded-2xl text-2xl">
                 📞
               </div>
 
@@ -86,7 +104,7 @@ function Contact() {
 
             <div className="flex items-start gap-5 mt-7">
 
-              <div className="w-14 h-14 flex items-center justify-center bg-orange-500/10 border border-orange-500/20 rounded-2xl text-2xl">
+              <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-orange-500/10 border border-orange-500/20 rounded-2xl text-2xl">
                 ✉️
               </div>
 
@@ -101,9 +119,10 @@ function Contact() {
               </div>
 
             </div>
+
             <div className="flex items-start gap-5 mt-7">
 
-              <div className="w-14 h-14 flex items-center justify-center bg-orange-500/10 border border-orange-500/20 rounded-2xl text-2xl">
+              <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-orange-500/10 border border-orange-500/20 rounded-2xl text-2xl">
                 🌙
               </div>
 
@@ -131,34 +150,57 @@ function Contact() {
               Tell us what's on your mind.
             </h2>
 
+            {submitted && (
+              <div className="mt-6 p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400">
+                <p className="font-semibold">
+                  ✓ Message sent successfully!
+                </p>
 
-            <form className="mt-8">
+                <p className="text-sm mt-1 text-green-400/80">
+                  Thanks for contacting Midnight Cravings. We'll get back to
+                  you soon.
+                </p>
+              </div>
+            )}
 
+
+            <form
+              onSubmit={handleSubmit}
+              className="mt-8"
+            >
               <div className="grid sm:grid-cols-2 gap-5">
 
                 <div>
+
                   <label className="block text-sm font-semibold mb-2">
                     Name
                   </label>
 
                   <input
                     type="text"
+                    name="name"
                     placeholder="Your name"
+                    required
                     className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 outline-none focus:border-orange-500 transition placeholder:text-zinc-600"
                   />
+
                 </div>
 
 
                 <div>
+
                   <label className="block text-sm font-semibold mb-2">
                     Email
                   </label>
 
                   <input
                     type="email"
+                    name="email"
                     placeholder="Your email"
+                    required
                     className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 outline-none focus:border-orange-500 transition placeholder:text-zinc-600"
                   />
+
                 </div>
 
               </div>
@@ -171,7 +213,9 @@ function Contact() {
 
                 <input
                   type="tel"
+                  name="phone"
                   placeholder="Your phone number"
+                  required
                   className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 outline-none focus:border-orange-500 transition placeholder:text-zinc-600"
                 />
 
@@ -185,11 +229,14 @@ function Contact() {
 
                 <input
                   type="text"
+                  name="subject"
                   placeholder="What is this about?"
+                  required
                   className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 outline-none focus:border-orange-500 transition placeholder:text-zinc-600"
                 />
 
               </div>
+
 
               <div className="mt-5">
 
@@ -198,16 +245,19 @@ function Contact() {
                 </label>
 
                 <textarea
+                  name="message"
                   rows="5"
                   placeholder="Write your message..."
+                  required
                   className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 outline-none focus:border-orange-500 transition placeholder:text-zinc-600 resize-none"
                 ></textarea>
 
               </div>
 
+
               <button
                 type="submit"
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3.5 rounded-full font-bold mt-6 transition duration-300"
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3.5 rounded-full font-bold mt-6 transition duration-300 hover:scale-[1.01]"
               >
                 Send Message 🍔
               </button>
@@ -219,6 +269,7 @@ function Contact() {
         </div>
 
       </section>
+
 
       <section className="px-6 md:px-12 lg:px-20 py-20">
 
@@ -243,7 +294,7 @@ function Contact() {
 
           <div className="grid md:grid-cols-3 gap-6">
 
-            <div className="text-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-orange-500 transition">
+            <div className="text-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:-translate-y-1 transition duration-300">
 
               <div className="text-5xl">
                 🛵
@@ -259,7 +310,8 @@ function Contact() {
               </p>
 
             </div>
-            <div className="text-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-orange-500 transition">
+
+            <div className="text-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:-translate-y-1 transition duration-300">
 
               <div className="text-5xl">
                 🍳
@@ -275,7 +327,8 @@ function Contact() {
 
             </div>
 
-            <div className="text-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-orange-500 transition">
+
+            <div className="text-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-orange-500 hover:-translate-y-1 transition duration-300">
 
               <div className="text-5xl">
                 🌙
@@ -309,12 +362,12 @@ function Contact() {
             Your next favorite meal is just one click away.
           </p>
 
-          <a
-            href="/products"
+          <Link
+            to="/products"
             className="inline-block bg-black text-white px-8 py-3.5 rounded-full font-bold mt-7 hover:bg-zinc-800 transition"
           >
             Explore Menu 🍔
-          </a>
+          </Link>
 
         </div>
 

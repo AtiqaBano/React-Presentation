@@ -75,8 +75,6 @@ function Home() {
           <div className="flex justify-center">
 
             <div className="relative">
-
-              {/* Glow */}
               <div className="absolute inset-0 bg-orange-500/20 blur-3xl rounded-full scale-90"></div>
 
               <img
@@ -205,12 +203,11 @@ function Home() {
               </h2>
             </div>
 
-            <a
-              href="/products"
-              className="text-orange-500 hover:text-orange-400 font-semibold mt-5 md:mt-0"
-            >
-              View Full Menu →
-            </a>
+            <Link to="/products"
+  className="text-orange-500 hover:text-orange-400 font-semibold mt-5 md:mt-0"
+>
+  View Full Menu →
+</Link>
 
           </div>
 
@@ -244,9 +241,12 @@ function Home() {
                     Rs. 499
                   </span>
 
-                  <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full text-sm font-semibold">
-                    Order
-                  </button>
+                  <Link
+  to="/products/1"
+  className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full text-sm font-semibold transition"
+>
+  Order
+</Link>
                 </div>
 
               </div>
@@ -279,9 +279,12 @@ function Home() {
                     Rs. 349
                   </span>
 
-                  <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full text-sm font-semibold">
-                    Order
-                  </button>
+<Link
+  to="/products/2"
+  className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full text-sm font-semibold transition"
+>
+  Order
+</Link>
                 </div>
 
               </div>
@@ -314,9 +317,12 @@ function Home() {
                     Rs. 899
                   </span>
 
-                  <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full text-sm font-semibold">
-                    Order
-                  </button>
+                  <Link
+  to="/products/3"
+  className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full text-sm font-semibold transition"
+>
+  Order
+</Link>
                 </div>
 
               </div>
@@ -349,9 +355,12 @@ function Home() {
                     Rs. 599
                   </span>
 
-                  <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full text-sm font-semibold">
-                    Order
-                  </button>
+                  <Link
+  to="/products/4"
+  className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full text-sm font-semibold transition"
+>
+  Order
+</Link>
                 </div>
 
               </div>
